@@ -34,7 +34,7 @@ public class Handler {
                 long delay = Math.round(Math.random()*config.range());
                 try {
                     Thread.sleep(delay);
-                    session.getRemote().sendString("Random Message: "+System.currentTimeMillis());
+                    session.getRemote().sendString("{\"message\": \""+System.currentTimeMillis()+"\"}");
                 } catch (InterruptedException | IOException e) {
                     LOG.error("Error sending randomly timed message", e);
                 }
@@ -53,7 +53,7 @@ public class Handler {
         this.session = session;
         if (session.isOpen()) {
             try {
-                session.getRemote().sendString("WebSocket connected");
+                session.getRemote().sendString("{\"message\": \"WebSocket connected\"}");
                 Thread messagingThread = new RandomIntervalMessageSender();
                 messagingThread.start();
             } catch (IOException ioe) {
