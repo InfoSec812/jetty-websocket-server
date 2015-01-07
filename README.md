@@ -13,28 +13,26 @@ Prerequisites
 Running
 -------
 
-    mvn java:exec -Dexec.args="-s ws[s]://host:port/path/to/websocket -t 30000 --header-file /path/to/headers"
-
-The header-file is a text file containing HTTP headers to be sent with the 
-WebSocket UPGRADE request in the format of:
-
-    HeaderName: Value:Continuation
-
-The headers are split on the FIRST colon, but subsequent colons are retained
-in the header value.
+    mvn java:exec -Dexec.args="-b 0.0.0.0 -u /websocket -r 3000 -i 5000"
 
 Command-Line Options
 --------------------
     Usage: websocket-test [options]
       Options:
-      --header-file
-           A file container headers to be appended to all requests
-      -s, --server-url 
-           The Websocket server to connect to. (ws[s]://host:port/path/to/websocket)
-           REQUIRED
-      -t, --timeout
-           The amount of time to run before exiting
+        -b, --bind
+           The IP address/interface to bind to
+           Default: 127.0.0.1
+        -i, --idle-timeout
+           Amount of time an idle websocket will be kept before disconnecting
            Default: 5000
-      --unsafe-ssl
-           Disable SSL certificate validation
-           Default: false
+        -u, --path
+           The path on which to accept WebSocket connections
+           Default: /websocket
+        -p, --port
+           The TCP port to bind to
+           Default: 8000
+        -r, --range
+           The range for the randomized timer between which message will be sent (in
+           milliseconds)
+           Default: 2000
+

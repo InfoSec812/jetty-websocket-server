@@ -28,4 +28,7 @@ public class Configuration {
 
     @Parameter(names = {"-r", "--range"}, description = "The range for the randomized timer between which message will be sent (in milliseconds)")
     private Integer range = 2000;
+
+    @Parameter(names = {"-i", "--idle-timeout"}, description = "Amount of time an idle websocket will be kept before disconnecting")
+    private Integer idleTimeout = 5000;
 }
