@@ -14,6 +14,11 @@ import org.eclipse.jetty.websocket.servlet.WebSocketServletFactory;
  */
 public class RandomWebSocketServlet extends WebSocketServlet {
 
+    /**
+     * 
+     */
+    private static final long serialVersionUID = -1134228059326523215L;
+
     private Configuration config = null;
 
     public RandomWebSocketServlet(Configuration config) {
